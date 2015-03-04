@@ -12,6 +12,7 @@ import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Application extends Controller {
@@ -134,22 +135,17 @@ public class Application extends Controller {
         page = ((HtmlSubmitInput) page.getElementById(Constants.NEXT_BUTTON)).click();
 
         // GENDER PAGE WHOA!! TRICKY!
-        try {
+
+        if (((ArrayList<HtmlSelect>) page.getByXPath("(//select)")).size()==4 ) {
             ((HtmlSelect) page.getFirstByXPath("(//select)[1]")).getOptionByText("Prefer not to answer").setSelected(true);
             ((HtmlSelect) page.getFirstByXPath("(//select)[2]")).getOptionByText("Prefer not to answer").setSelected(true);
             ((HtmlSelect) page.getFirstByXPath("(//select)[3]")).getOptionByText("Prefer not to answer").setSelected(true);
             ((HtmlSelect) page.getFirstByXPath("(//select)[4]")).getOptionByText("Prefer not to answer").setSelected(true);
             System.out.println("Gender page displayed");
             page = ((HtmlSubmitInput) page.getElementById(Constants.NEXT_BUTTON)).click();
-//            String code = ((HtmlParagraph) page.getFirstByXPath("(//p[@class='ValCode'])")).asXml().replaceAll("\\D+","");
         }
 
-        catch (NullPointerException e) {
-            System.out.println("Gender page not displayed");
 
-        }
-
-        finally {
             String code = ((HtmlParagraph) page.getFirstByXPath("(//p[@class='ValCode'])")).asXml().replaceAll("\\D+","");
 
 
@@ -163,7 +159,7 @@ public class Application extends Controller {
 //        return ok(page.getBody().asXml());
 
 
-        }
+
 
 
 

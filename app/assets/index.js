@@ -13,7 +13,6 @@ $(document).ready(function(){
 		$.ajax({
 	        type: 'POST',
 	        url: '//'+location.host+'/rest/find',
-	        contentType: 'application/json',
 	        data: {
 	            'sn1': $('#sn1').val(),
 	            'sn2': $('#sn2').val(),
@@ -26,7 +25,9 @@ $(document).ready(function(){
 	        	$('#submit').prop('disabled', true);
 	        },
 	        success: function (data, status, jqXHR) {
-	        	$('#code').text(data.code);
+                //console.log(data)
+                $('#code').text(data);
+                //$('body').html(data)
 	        },
 	        error: function (jqXHR, status) {
 	        	$('#code').text("Ops, something went wrong :(");
@@ -36,7 +37,7 @@ $(document).ready(function(){
 	        	$('#submit').prop('disabled', false);
 	        }
 	   });
-		
+
 	});
 	
 });

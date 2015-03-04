@@ -1,12 +1,9 @@
-@import helper._
+
 
 @main {
     <script src="/assets/index.js"></script>
 
-    <div class=container>
-
         <form>
-
             <div class="row">
                 <div class="small-12 columns">
                     <h4>Please enter your receipt's Serial Number</h4>
@@ -39,20 +36,33 @@
                     <button id=submit type=button>Generate coupon code</button>
                 </div>
                 <div class='small-12 columns'>
-                    <span id=spinner hidden=true style='margin:20px;'>
+                    <span id=spinner hidden=true'>
                         <i class="fa fa-2x fa-spinner fa-spin" ></i>
                     </span>
                 </div>
 
             </div>
 
+            <div class="row">
+                <div class="small-12 columns">
+                    <h1 id=code></h1>
+                </div>
+            </div>
+
+
+
 
         </form>
 
 
 
-        <h1 id=code style="text-align:center"></h1>
-    </div>
+
+
+
+
+
+
+
 
 
 }

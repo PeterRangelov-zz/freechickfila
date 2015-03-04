@@ -1,7 +1,58 @@
-@(message: String)
 
-@main("Welcome to PLAY!") {
 
-    @play20.welcome(message, style = "Java")
+@main {
+    <script src=/assets/index.js></script>
+
+    <div class=container>
+
+        <form>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <h4>Please enter your receipt's Serial Number</h4>
+                    <p>For example, 5260202 01454 1820 1128 48</p>
+                </div>
+
+                <div class="small-6 medium-3 large-3 columns">
+                    <input id=sn1 type=text maxlength=7 >
+                </div>
+                <div class="small-6 medium-3 large-3 columns">
+                    <input id=sn2 type=text maxlength=5>
+                </div>
+                <div class="small-4 medium-2 large-2 columns">
+                    <input id=sn3 type=text maxlength=4>
+                </div>
+                <div class="small-4 medium-2 large-2 columns">
+                    <input id=sn4 type=text maxlength=4>
+                </div>
+                <div class="small-4 medium-2 large-2 columns">
+                    <input id=sn5 type=text maxlength=2>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <button id=submit type=button>Generate coupon code</button>
+                </div>
+                <div class='small-12 columns'>
+                    <span id=spinner hidden=true style='margin:20px;'>
+                        <i class="fa fa-2x fa-spinner fa-spin" ></i>
+                    </span>
+                </div>
+
+            </div>
+
+
+        </form>
+
+
+
+        <h1 id=code style="text-align:center"></h1>
+    </div>
+
 
 }

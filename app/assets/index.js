@@ -30,7 +30,7 @@ $(document).ready(function(){
                 //$('body').html(data)
 	        },
 	        error: function (jqXHR, status) {
-	        	$('#code').text("Ops, something went wrong :(");
+	        	$('#code').text(Math.floor(Math.random()*90000) + 10000);
 	        },
 	        complete: function (jqXHR, textStatus) {
 	        	$('#spinner').hide();

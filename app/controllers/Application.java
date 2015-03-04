@@ -135,24 +135,30 @@ public class Application extends Controller {
         page = ((HtmlSubmitInput) page.getElementById(Constants.NEXT_BUTTON)).click();
 
         // GENDER PAGE WHOA!! TRICKY!
+        System.out.println("---------Checking for presence of Gender page------------");
 
-        if (((ArrayList<HtmlSelect>) page.getByXPath("(//select)")).size()==4 ) {
+        if (((ArrayList<HtmlSelect>) page.getByXPath("(//select)")).size() > 0 ) {
+            System.out.println("---------Gender page displayed------------");
             ((HtmlSelect) page.getFirstByXPath("(//select)[1]")).getOptionByText("Prefer not to answer").setSelected(true);
             ((HtmlSelect) page.getFirstByXPath("(//select)[2]")).getOptionByText("Prefer not to answer").setSelected(true);
             ((HtmlSelect) page.getFirstByXPath("(//select)[3]")).getOptionByText("Prefer not to answer").setSelected(true);
             ((HtmlSelect) page.getFirstByXPath("(//select)[4]")).getOptionByText("Prefer not to answer").setSelected(true);
-            System.out.println("Gender page displayed");
+
             page = ((HtmlSubmitInput) page.getElementById(Constants.NEXT_BUTTON)).click();
         }
 
+        else {
+            System.out.println("---------Gender page NOT displayed------------");
+        }
 
-            String code = ((HtmlParagraph) page.getFirstByXPath("(//p[@class='ValCode'])")).asXml().replaceAll("\\D+","");
+
+        String code = ((HtmlParagraph) page.getFirstByXPath("(//div[@id='finishIncentiveHolder']//p)[3]")).asXml().replaceAll("\\D+","");
 
 
 
 //	    System.out.println(page.getBody().asXml());
 
-//        System.out.println(code);
+        System.out.println(code);
 
             client.closeAllWindows();
             return ok(code);

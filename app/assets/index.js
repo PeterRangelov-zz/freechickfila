@@ -10,6 +10,7 @@ $(document).ready(function(){
 	}
 	
 	$('#submit').click(function(){
+        // check for errors
 		$.ajax({
 	        type: 'POST',
 	        url: '//'+location.host+'/rest/find',

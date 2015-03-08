@@ -173,4 +173,8 @@ public class Application extends Controller {
 
     }
 
+    public static Result test() {
+        return ok(index.render());
+    }
+
 }
